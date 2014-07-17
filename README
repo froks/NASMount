@@ -1,0 +1,25 @@
+NASMount allows you to mount the crypted shared folders of your Synology NAS directly on your desktop, not using the webgui provided on the nas. And as it tries the password on every crypted folder first, asking for the next password only if there are crypted folders left, it saves alot time. 
+
+Story-Time:
+After playing around with my DS409 I was quite unhappy with the time-consuming mounting process of mounting several shares with the same password, as there was no solution for this in sight I just hacked up my own.
+
+As there are probably a few more people who would like to remote unlock I decided to publish the program.
+
+Windows:
+To use it you must have the JRE (http://www.java.com/en/download/index.jsp) installed. After installing it you have to create a shortcut to the NASMount.jar and add to the "Target"-Field the ip and port of the NAS and (optionally) the admin-Password. So the final Target-line will look something like:
+"D:\mypath\NASMount\NASMount.jar http://<the Nas IP>:5000 [Adminpassword]" (withouth the "").
+
+It works as follows:
+- If no Admin-Password was supplied, asks for the admin-Password
+- It tries to login with admin and the supplied password
+- While there are encrypted shares that aren't mounted
+-- ask for password
+-- try to decrypt the shares with the password
+- repeat
+ 
+
+p.s. It is only tested with the DSM 3 on my DS409 - It should work on other Versions too, but no guarantee.
+
+
+it uses json-simple (https://code.google.com/p/json-simple/) licensed under Apache License 2.0 (see LICENSE.txt)
+this software is licensed under the same license.
